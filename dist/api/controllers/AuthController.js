@@ -75,12 +75,9 @@ module.exports = {
       }
     }
 
-    sails.services.passport.callback(req, res, function (err, user, info, status) {
+    sails.services.passport.callback(req, res, function (err, user) {
       if (err || !user) {
-        sails.log.warn(user, err, info, status);
-        if (!err && info) {
-          return negotiateError(info);
-        }
+        sails.log.warn(user, err);
         return negotiateError(err);
       }
 
@@ -94,7 +91,6 @@ module.exports = {
 
         sails.log.info('user', user, 'authenticated successfully');
         return res.status(302).set('Location', sails.config.passport.redirectUrl);
-        //return res.json(user);
       });
     });
   },

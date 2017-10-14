@@ -22,30 +22,24 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var authHook = sails.hooks.auth;
+var Auth = function (_Marlinspike) {
+  _inherits(Auth, _Marlinspike);
 
-if (!authHook) {
-  var Auth = function (_Marlinspike) {
-    _inherits(Auth, _Marlinspike);
+  function Auth(sails) {
+    _classCallCheck(this, Auth);
 
-    function Auth(sails) {
-      _classCallCheck(this, Auth);
+    return _possibleConstructorReturn(this, (Auth.__proto__ || Object.getPrototypeOf(Auth)).call(this, sails, module));
+  }
 
-      return _possibleConstructorReturn(this, (Auth.__proto__ || Object.getPrototypeOf(Auth)).call(this, sails, module));
+  _createClass(Auth, [{
+    key: 'configure',
+    value: function configure() {
+      sails.services.passport.loadStrategies();
     }
+  }]);
 
-    _createClass(Auth, [{
-      key: 'configure',
-      value: function configure() {
-        sails.services.passport.loadStrategies();
-      }
-    }]);
+  return Auth;
+}(_marlinspike2.default);
 
-    return Auth;
-  }(_marlinspike2.default);
-
-  authHook = _marlinspike2.default.createSailsHook(Auth);
-}
-
-exports.default = authHook;
+exports.default = _marlinspike2.default.createSailsHook(Auth);
 module.exports = exports['default'];

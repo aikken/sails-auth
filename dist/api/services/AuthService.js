@@ -8,7 +8,7 @@ module.exports = {
    * @param req
    */
   buildCallbackNextUrl: function buildCallbackNextUrl(req) {
-    var url = req.body.next;
+    var url = req.query.next;
     var includeToken = req.query.includeToken;
     var accessToken = _.get(req, 'session.tokens.accessToken');
 

@@ -19,14 +19,6 @@ module.exports = {
     });
   },
 
-  update: function update(req, res, next) {
-    sails.services.passport.protocols.local.update(req.body, function (err, user) {
-      if (err) return res.negotiate(err);
-
-      res.ok(user);
-    });
-  },
-
   me: function me(req, res) {
     res.ok(req.user);
   }
