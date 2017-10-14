@@ -90,7 +90,7 @@ module.exports = {
         req.session.authenticated = true;
 
         sails.log.info('user', user, 'authenticated successfully');
-        return res.status(302).set('Location', sails.config.passport.redirectUrl);
+        return res.status(302).set('Location', sails.config.redirectUrl);
       });
     });
   },
