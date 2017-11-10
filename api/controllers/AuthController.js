@@ -62,10 +62,10 @@ module.exports = {
 
     function negotiateError (err) {
       if (action === 'register') {
-        res.redirect('/register');
+        res.redirect('/register/');
       }
       else if (action === 'login') {
-        res.redirect('/login');
+        res.redirect('/login/');
       }
       else if (action === 'disconnect') {
         res.redirect('back');
@@ -92,7 +92,7 @@ module.exports = {
         req.session.authenticated = true;
 
         sails.log.info('user', user, 'authenticated successfully');
-        return res.status(302).set('Location', sails.config.redirectUrl);
+        return res.redirect(sails.config.redirectUrl);
       });
     });
   },

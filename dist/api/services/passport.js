@@ -171,7 +171,7 @@ passport.endpoint = function (req, res) {
   // If a provider doesn't exist for this endpoint, send the user back to the
   // login page
   if (!_.has(strategies, provider)) {
-    return res.redirect('/login');
+    return res.redirect('/login/');
   }
 
   // Attach scope if it has been set in the config
