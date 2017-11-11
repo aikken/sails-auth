@@ -135,7 +135,7 @@ passport.connect = function (req, query, profile, next) {
             .then(function () {
 
               // Fetch the user associated with the Passport
-              return sails.models.user.findOne(passport.user.id);
+              return sails.models.user.findOne(passport.user);
             })
             .then(function (user) {
               next(null, user);
